@@ -5,8 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-    
+    <ons-page>
+        <ons-toolbar>
+                <ons-page id="helloworld-page">
+                        <ons-toolbar>
+                          <div class="left">
+                            <ons-toolbar-button icon="md-store"></ons-toolbar-button>
+                          </div>
+                      
+                          <div class="center">Home</div>
+                      
+                          <div class="right">
+                                <ons-toolbar-button icon="md-help"></ons-toolbar-button>
+                            </div>
+                        </ons-toolbar>
+                      
+                        <p style="text-align: center">Some content.</p>
+                      </ons-page>
+        </ons-toolbar>
+      
+        <ons-tabbar swipeable position="auto">
+          <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="7" active>
+          </ons-tab>
+          <ons-tab page="tab2.html" label="Cart" icon="md-shopping-cart" >
+          </ons-tab>
+        </ons-tabbar>
+      </ons-page>
+      
+      <template id="tab1.html">
+        <ons-page id="Tab1">
+                <p style="text-align: center; margin-top: 10px;">
+                        <ons-search-input
+                          placeholder="Search"
+                          onchange="ons.notification.alert('Searched for: ' + this.value)"
+                        ></ons-search-input>
+                      </p>
+        
+                <ons-carousel  swipeable auto-scroll overscrollable id="carousel">
+                  <ons-carousel-item >
+                    <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
+                      <img src="img/1.jpg" alt="" srcset="">
+                    </div>
+                  </ons-carousel-item>
+                  <ons-carousel-item >
+                    <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
+                      <img src="img/2.jpg" alt="" srcset="">
+                    </div>
+                  </ons-carousel-item>
+                  <ons-carousel-item >
+                    <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
+                      <img src="img/3.jpg" alt="" srcset="">
+                    </div>
+                  </ons-carousel-item>
+                </ons-carousel>
+            
+      </template>
+      </ons-page>
+      <template id="tab2.html">
+        <ons-page id="Tab2">
+          <ons-list>
+            <ons-list-header>SHOPPING CART</ons-list-header>
+            <ons-list-item>
+              <div class="left">
+                <img class="item1" src="img/item1.jpg">
+              </div>
+              <div class="center">
+                <span class="nitem">Apple Watch Series 3 GPS 42 mm.</span><span class="pitem">฿ 12,650.00</span>
+              </div>
+            </ons-list-item>
+            <ons-list-item>Item B</ons-list-item>
+          </ons-list>
+          </ons-page>
+      </template>
 </body>
 </html>
+<script>
+        document.addEventListener('prechange', function(event) {
+        document.querySelector('ons-toolbar .center')
+        .innerHTML = event.tabItem.getAttribute('label');
+        });
+</script>
